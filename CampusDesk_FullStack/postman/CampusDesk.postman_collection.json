@@ -1,0 +1,99 @@
+{
+  "info": {
+    "_postman_id": "e09b8137-66b0-4e80-9cc3-campusdesk",
+    "name": "CampusDesk Student API",
+    "description": "CRUD and health-check requests. Start with npm run dev first.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "studentId",
+      "value": "STU-1001"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Get All Students",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/students"
+      }
+    },
+    {
+      "name": "Search Students",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/students?q=ayesha"
+      }
+    },
+    {
+      "name": "Get One Student",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      }
+    },
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/students",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Student\",\n  \"email\": \"test.student@example.com\",\n  \"degree\": \"BS Software Engineering\",\n  \"semester\": 2,\n  \"gpa\": 3.5,\n  \"status\": \"Active\",\n  \"marks\": 86,\n  \"classesAttended\": 18,\n  \"totalClasses\": 20\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/api/students/{{studentId}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Test Student\",\n  \"email\": \"updated.student@example.com\",\n  \"degree\": \"BS Software Engineering\",\n  \"semester\": 3,\n  \"gpa\": 3.75,\n  \"status\": \"Active\",\n  \"marks\": 91,\n  \"classesAttended\": 19,\n  \"totalClasses\": 20\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      }
+    }
+  ]
+}
